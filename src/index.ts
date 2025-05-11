@@ -6,7 +6,7 @@ export interface Command<T = unknown> {
 }
 
 export interface State<T = unknown> {
-	current: T
+	current: T;
 	options: Options;
 
 	undos: Command<T>[];
@@ -17,7 +17,10 @@ export interface Options {
 	maxStackSize?: number;
 }
 
-export const createStack = <T = unknown>(initial: T, options: Options = {}): State<T> => ({
+export const createStack = <T = unknown>(
+	initial: T,
+	options: Options = {},
+): State<T> => ({
 	options: {
 		maxStackSize: 10,
 		...options,
@@ -25,14 +28,16 @@ export const createStack = <T = unknown>(initial: T, options: Options = {}): Sta
 	current: initial,
 	undos: [],
 	redos: [],
-})
+});
 
-export function execute<T = unknown>(state: State<T>, command: Command<T>): State<T> {
+export function execute<T = unknown>(
+	state: State<T>,
+	command: Command<T>,
+): State<T> {
 	const current = command.execute();
 	const stack = [...state.undos, command];
 
-	if (state.options.maxStackSize &&
-		stack.length > state.options.maxStackSize) {
+	if (state.options.maxStackSize && stack.length > state.options.maxStackSize) {
 		stack.shift();
 	}
 
@@ -45,8 +50,7 @@ export function execute<T = unknown>(state: State<T>, command: Command<T>): Stat
 }
 
 export function undo<T = unknown>(state: State<T>): State<T> {
-	if (state.undos.length === 0)
-		return state;
+	if (state.undos.length === 0) return state;
 
 	const command = state.undos.pop();
 	if (!command) {
@@ -56,8 +60,7 @@ export function undo<T = unknown>(state: State<T>): State<T> {
 	const current = command.undo();
 	const stack = [...state.redos, command];
 
-	if (state.options.maxStackSize &&
-		stack.length > state.options.maxStackSize) {
+	if (state.options.maxStackSize && stack.length > state.options.maxStackSize) {
 		stack.shift();
 	}
 
@@ -70,8 +73,7 @@ export function undo<T = unknown>(state: State<T>): State<T> {
 }
 
 export function redo<T = unknown>(state: State<T>): State<T> {
-	if (state.redos.length === 0)
-		return state;
+	if (state.redos.length === 0) return state;
 
 	const command = state.redos.pop();
 	if (!command) {
@@ -81,8 +83,7 @@ export function redo<T = unknown>(state: State<T>): State<T> {
 	const current = command.execute();
 	const stack = [...state.undos, command];
 
-	if (state.options.maxStackSize &&
-		stack.length > state.options.maxStackSize) {
+	if (state.options.maxStackSize && stack.length > state.options.maxStackSize) {
 		stack.shift();
 	}
 
@@ -99,7 +100,7 @@ export const clear = <T = unknown>(state: State<T>): State<T> => ({
 	options: state.options,
 	undos: [],
 	redos: [],
-})
+});
 
 export const can = {
 	undo: (state: State) => state.undos.length > 0,
