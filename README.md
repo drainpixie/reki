@@ -1,6 +1,6 @@
 # 🌳 rek**ishi** 歴史
 
-a lite undostack
+a lithe undostack
 
 <!-- ![screenshot](./scrot.png) -->
 
