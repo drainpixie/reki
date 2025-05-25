@@ -7,23 +7,30 @@ a lithe undostack
 ## 🖥️ use
 
 ```sh
-mkdir vendor
-git clone https://git.sr.ht/~pixie/rek vendor/rekishi
-pnpm add ./vendor/rekishi
+$ pnpm add @drainpixie/rekishi
 ```
 
 ```ts
-import { Command, createStack, execute, undo, redo, clear, can, find } from '@pixie/rekishi';
+import {
+  Command,
+  createStack,
+  execute,
+  undo,
+  redo,
+  clear,
+  can,
+  find,
+} from "@drainpixie/rekishi";
 
 interface Counter {
-    value: number;
+  value: number;
 }
 
 const increment = (amount: number): Command<Counter> => ({
-    execute: () => ({ value: state.current.value + amount }),
-    undo: () => ({ value: state.current.value - amount }),
+  execute: () => ({ value: state.current.value + amount }),
+  undo: () => ({ value: state.current.value - amount }),
 
-    name: `increment @ ${amount}`,
+  name: `increment @ ${amount}`,
 });
 
 const initial = { value: 0 };
