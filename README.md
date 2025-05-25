@@ -1,4 +1,4 @@
-# 🌳 rek**ishi** 歴史
+# 🌳 reki**shi** 歴史
 
 a lithe undostack
 
@@ -7,7 +7,7 @@ a lithe undostack
 ## 🖥️ use
 
 ```sh
-$ pnpm add @drainpixie/rekishi
+$ pnpm add @drainpixie/reki
 ```
 
 ```ts
@@ -20,7 +20,7 @@ import {
   clear,
   can,
   find,
-} from "@drainpixie/rekishi";
+} from "@drainpixie/reki";
 
 interface Counter {
   value: number;
