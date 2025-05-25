@@ -13,7 +13,7 @@ pnpm add ./vendor/rekishi
 ```
 
 ```ts
-import { Command, createStack, execute, undo, redo, clear, can, find } from './index.js';
+import { Command, createStack, execute, undo, redo, clear, can, find } from '@pixie/rekishi';
 
 interface Counter {
     value: number;
