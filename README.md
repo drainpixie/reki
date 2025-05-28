@@ -2,8 +2,6 @@
 
 a lithe undostack
 
-<!-- ![screenshot](./scrot.png) -->
-
 ## 🖥️ use
 
 ```sh
@@ -61,15 +59,4 @@ state.current = initial;
 
 ```sh
 nix develop
-pnpm install
 ```
-
-<details>
-  <summary>dependencies for contributors</summary>
-  
-  ```sh
-  cargo install --locked koji
-  corepack use pnpm
-  ```
-
-</details>
