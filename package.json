@@ -32,6 +32,7 @@
     "state"
   ],
   "devDependencies": {
+    "@eslint/compat": "^1.2.9",
     "@eslint/js": "^9.27.0",
     "@types/node": "^22.13.9",
     "eslint": "^9.27.0",
